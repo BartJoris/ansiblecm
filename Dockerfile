@@ -20,6 +20,9 @@ RUN apk add --no-cache \
 		py2-yaml=3.12-r1 \
 		sshpass=1.06-r0 \
 		tar=1.30-r0 \
+	    bash \
+		git \
+		curl \
 		&& \
     apk add --no-cache --virtual build-dependencies \		
 		gcc=6.4.0-r9 \		
@@ -32,8 +35,11 @@ RUN apk add --no-cache \
 		boto==2.49.0 \
 		boto3==1.7.77 \
 		pywinrm[kerberos]==0.3.0 \
+	    python-gitlab \
 		&& \
 	apk del build-dependencies
+
+ADD git-push /usr/local/bin/
 
 VOLUME ["/tmp/playbook"]
 

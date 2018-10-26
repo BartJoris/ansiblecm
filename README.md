@@ -24,27 +24,27 @@ docker build --tag ansiblecm:2.7.0 .
 
 ## Usage
 
-Docker images are available on [Docker Hub](https://hub.docker.com/r/jmal98/ansiblecm/).
+Docker images are available on [Docker Hub](https://hub.docker.com/r/bartjoris/ansiblecm).
 
 By default, this control machine will assume the execution of an Ansible playbook.  To specify which playbook
 to run, simply map the playbook into the container like so:
 
 ```bash
-docker run -it --rm -v <absolute path to playbook>:/tmp/playbook:Z jmal98/ansiblecm:2.7.0 <playbook arguments>
+docker run -it --rm -v <absolute path to playbook>:/tmp/playbook:Z bartjoris/ansiblecm:2.7.0 <playbook arguments>
 ```
 
 
 For example, the following will run the playbook in the current directory.
 
 ```bash
-docker run -it --rm -v $PWD:/tmp/playbook:Z jmal98/ansiblecm:2.7.0 site.yml -i inventory/hosts
+docker run -it --rm -v $PWD:/tmp/playbook:Z bartjoris/ansiblecm:2.7.0 site.yml -i inventory/hosts
 ```
 
 
 This control machine is also useful for running Ansible "[one liners](http://docs.ansible.com/ansible/latest/intro_adhoc.html)" which do not require a playbook.  The example below runs the setup module on the web machines as specified in the inventory file.
 
 ```bash
-docker run -it --rm --entrypoint ansible jmal98/ansiblecm:2.7.0 web -m setup -i inventory
+docker run -it --rm --entrypoint ansible bartjoris/ansiblecm:2.7.0 web -m setup -i inventory
 ```
 
 ## Demo
